@@ -22,10 +22,16 @@ def hello(name=None):
 @app.route("/results")
 def results():
     if "name" in session:
-        return render_template("results.html", name=session["name"])
+        return render_template(
+            "results.html",
+            name=session["name"],
+            result="Invest",
+            trials="2430",
+            confidence="97",
+        )
     else:
         return redirect("/")
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug=True)
