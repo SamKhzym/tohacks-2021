@@ -1,9 +1,6 @@
-<<<<<<< Updated upstream
-#routes file
-=======
+
 from flask import Flask
 from alpha_vantage.timeseries import TimeSeries
->>>>>>> Stashed changes
 import ta
 import pandas as pd
 
@@ -22,9 +19,6 @@ def generate_returns(df):
         returns = (df[CLOSE_NAME] - df[OPEN_NAME].shift(periods=window))/df[OPEN_NAME].shift(periods=window)
         returns_columns.append(returns)
 
-<<<<<<< Updated upstream
-    return returns_columns
-=======
     return returns_columns
 
 #Returns daily dataframe of specified stock ticker with all bukosabino/ta indicators
@@ -35,4 +29,3 @@ def get_stock_data(ticker):
     df = ta.add_all_ta_features(df, open="open", high="high", low="low", close="adjusted_close", volume="volume")
 
     return df
->>>>>>> Stashed changes
