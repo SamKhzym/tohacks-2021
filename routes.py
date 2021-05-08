@@ -13,7 +13,7 @@ def hello(name=None):
 
         return redirect("/results")
     else:
-        return render_template("homepage.html")
+        return render_template("request.html")
 
 
 @app.route("/results")
@@ -25,4 +25,4 @@ def results():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True)
