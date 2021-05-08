@@ -2,6 +2,22 @@
 {% block link %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css') }}">
 {% endblock %}
+{% block h %}
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<title>Checkbox</title>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#checkbox1').change(function () {
+        if (this.checked) 
+        //  ^
+           $('#autoUpdate').fadeIn('slow');
+        else 
+            $('#autoUpdate').fadeOut('slow');
+    });
+});
+
+</script>
+{% endblock %}
 {% block content %}
 <div class="main">
   <h1>Fixed Top Menu</h1>
@@ -11,6 +27,8 @@
   <p>Some text some text some text some text..</p>
   <p>Some text some text some text some text..</p>
   <p>Some text some text some text some text..</p>
+  <input type="checkbox" id="checkbox1"/>
+  <div id="autoUpdate" class="autoUpdate">
   <script>
     var body = document.body,
         tbl  = document.createElement('table');
@@ -63,7 +81,9 @@
             }
         }
     }
-    body.appendChild(tbl);
+    document.getElementById("autoUpdate").appendChild(tbl);
+    document.getElementById("autoUpdate").style.display="none";
   </script>
+  </div>
 </div>
 {% endblock %}
