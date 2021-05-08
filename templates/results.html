@@ -21,8 +21,64 @@
   <p>Some text some text some text some text..</p>
   <p>Some text some text some text some text..</p>
   <p>Some text some text some text some text..</p>
+  <script>
+    var body = document.body,
+        tbl  = document.createElement('table');
+    tbl.style.width  = '100px';
+    tbl.style.border = '1px solid black';
+
+    for(var i = 0; i < 2; i++){
+        var tr = tbl.insertRow();
+        for(var j = 0; j < 29; j++){
+            if(i == 2 && j == 1){
+                break;
+            } else {
+                var td = tr.insertCell();
+                if (i==0){
+                  if (j==0){
+                    td.appendChild(document.createTextNode(''));
+                  }
+                  else{
+                    td.appendChild(document.createTextNode(j));
+                  }
+                }
+                if (i==1){
+                  if (j==0){
+                    td.appendChild(document.createTextNode('Data'));
+                  }
+                  else{
+                    if (j%3==0){
+                      td.appendChild(document.createTextNode('+'));
+                    }
+                    else{
+                      td.appendChild(document.createTextNode('-'));
+                    }
+                  }
+                }
+                td.style.border = '1px solid black';
+                if(i == 1 && j == 1){
+                    td.setAttribute('rowSpan', '2');
+                }
+            }
+        }
+    }
+    var cells = tbl.getElementsByTagName('td');
+    for (var r = 1, n = tbl.rows.length; r < n; r++) {
+        for (var c = 0, m = tbl.rows[r].cells.length; c < m; c++) {
+            if (tbl.rows[r].cells[c].innerHTML=="+"){
+              cells[c+r*29].style.color="#00FF00";
+            }
+            if (tbl.rows[r].cells[c].innerHTML=="-"){
+              cells[c+r*29].style.color="#FF0000";
+            }
+        }
+    }
+    body.appendChild(tbl);
+</script>
+  
 </div>
 
 </body>
 </html>
+
 
