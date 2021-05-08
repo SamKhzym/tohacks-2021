@@ -20,20 +20,25 @@ $(document).ready(function () {
 {% endblock %}
 {% block content %}
 <div class="main">
-  <h1>Fixed Top Menu</h1>
-  <h2>Scroll this page to see the effect</h2>
-  <h2>The navigation bar will stay at the top of the page while scrolling</h2>
-
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <p>Some text some text some text some text..</p>
-  <input type="checkbox" id="checkbox1"/>
-  <div id="autoUpdate" class="autoUpdate">
+  {%if result in ["Invest"]%}
+    <h1>{{result}}</h1>
+  {%elif result in ["Don't Invest"]%}
+    <h3>{{result}}</h3>
+  {% endif %}
+  <h4 style="text-align:center"> Based on {{trials}} datapoints investing in {{name}} would be a good idea with a {{confidence}}% confidence</h4>
+  <div style="text-align:center; vertical-align: middle; padding:20px">
+    <h4 style="margin: 0px auto 0px auto;">Advanced View</h4><br>
+    <label class="switch">
+      <input type="checkbox" id=checkbox1>
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <div style="text-align:center" id="autoUpdate" class="autoUpdate" >
   <script>
     var body = document.body,
         tbl  = document.createElement('table');
     tbl.style.width  = '100px';
-    tbl.style.border = '1px solid black';
+    tbl.style.border = '1px solid white';
 
     for(var i = 0; i < 2; i++){
         var tr = tbl.insertRow();
@@ -56,14 +61,14 @@ $(document).ready(function () {
                   }
                   else{
                     if (j%3==0){
-                      td.appendChild(document.createTextNode('+'));
+                      td.appendChild(document.createTextNode(' + '));
                     }
                     else{
-                      td.appendChild(document.createTextNode('-'));
+                      td.appendChild(document.createTextNode(' - '));
                     }
                   }
                 }
-                td.style.border = '1px solid black';
+                td.style.border = '1px solid white';
                 if(i == 1 && j == 1){
                     td.setAttribute('rowSpan', '2');
                 }
@@ -71,16 +76,24 @@ $(document).ready(function () {
         }
     }
     var cells = tbl.getElementsByTagName('td');
-    for (var r = 1, n = tbl.rows.length; r < n; r++) {
+    for (var r = 0, n = tbl.rows.length; r < n; r++) {
         for (var c = 0, m = tbl.rows[r].cells.length; c < m; c++) {
-            if (tbl.rows[r].cells[c].innerHTML=="+"){
+          cells[c+r*29].style.color="#FFFFFF";
+          if (r==1){
+            if (tbl.rows[r].cells[c].innerHTML==" + "){
               cells[c+r*29].style.color="#00FF00";
             }
-            if (tbl.rows[r].cells[c].innerHTML=="-"){
+            if (tbl.rows[r].cells[c].innerHTML==" - "){
               cells[c+r*29].style.color="#FF0000";
             }
+          }
         }
     }
+    tbl.style.padding="4px";
+    tbl.style.borderSpacing="4px";
+    tbl.style.marginLeft="auto";
+    tbl.style.marginRight="auto";
+    tbl.style.columnWidth="100px";
     document.getElementById("autoUpdate").appendChild(tbl);
     document.getElementById("autoUpdate").style.display="none";
   </script>
