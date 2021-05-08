@@ -19,7 +19,7 @@ def hello(name=None):
 @app.route("/results")
 def results():
     if "name" in session:
-        return render_template("template.html", name=session["name"])
+        return render_template("results.html", name=session["name"])
     else:
         return redirect("/")
 
