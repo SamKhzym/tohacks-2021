@@ -4,8 +4,11 @@ from flask.helpers import send_from_directory
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+@app.route("/")
+def home():
+    return render_template("home.html")
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/request", methods=["POST", "GET"])
 def hello(name=None):
 
     if request.method == "POST":

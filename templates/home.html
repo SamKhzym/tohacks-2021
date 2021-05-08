@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+{% endblock %}
+{% block title %}Is this a Good Time?{% endblock %}
+{% block h %}<h1>Stock Market Prediction Tool</h1>{% endblock %}
+{% block content %}
+<h2>Using TensorFlow ML, thousands of data points are analysed in order to create an accurate model to predict the projected stock value, and return whether that is above or below the current. This allows informed decisions on whether purchasing stock is a good idea, or a poor one.</h2>
+{% endblock %}
