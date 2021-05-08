@@ -1,39 +1,24 @@
-
-# routes file
-
-from flask import Flask
+from flask import Flask, url_for, render_template, request, session, redirect
+from flask.helpers import send_from_directory
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
-"""
-TECH INDICATORS Example
+@app.route("/", methods=["POST", "GET"])
+def hello(name=None):
 
-from alpha_vantage.techindicators import TechIndicators
-import matplotlib.pyplot as plt
+    if request.method == "POST":
+        session["name"] = request.form["sname"]
 
-ti = TechIndicators(key='YOUR_API_KEY', output_format='pandas')
-data, meta_data = ti.get_bbands(symbol='MSFT', interval='60min', time_period=60)
-data.plot()
-plt.title('BBbands indicator for  MSFT stock (60 min)')
-plt.show()
+        return redirect("/results")
+    else:
+        return render_template("homepage.html")
 
-"""
 
-#routes file
-import ta
-import pandas as pd
-
-def generate_returns(df):
-
-    TIME_WINDOW = 28
-    OPEN_NAME = "Open"
-    CLOSE_NAME = "Close"
-
-    returns_columns = []
-
-    for window in range(TIME_WINDOW):
-        returns = df[CLOSE_NAME] - df[OPEN_NAME].shift(periods=window)
-        returns_columns.append(returns)
-
-    return returns_columns
+@app.route("/results")
+def results():
+    if "name" in session:
+        return render_template("template.html", name=session["name"])
+    else:
+        return redirect("/")
