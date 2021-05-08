@@ -22,3 +22,7 @@ def results():
         return render_template("template.html", name=session["name"])
     else:
         return redirect("/")
+
+
+if __name__ == "__main__":
+    app.run()
