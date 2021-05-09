@@ -32,6 +32,10 @@ def results():
     else:
         return redirect("/")
 
+@app.route("/googlehome/")
+def say():
+    text=request.args.get("text")
+    return redirect("https://www.arielwolle.com:9191/say/?text="+text+" is a good investment"
 
 if __name__ == "__main__":
     app.run(debug=True)
