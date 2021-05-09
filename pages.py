@@ -41,7 +41,7 @@ def say():
     return redirect(
         (
             "http://www.arielwolle.com:9191/sas/?text="
-            + "hello my"
+            + "hello my guy"
             + text
             + " is a good investment"
         ).replace(" ", "%20")
