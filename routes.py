@@ -4,9 +4,11 @@ from flask.helpers import send_from_directory
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+
 @app.route("/")
 def home():
     return render_template("home.html")
+
 
 @app.route("/request", methods=["POST", "GET"])
 def hello(name=None):
@@ -32,10 +34,14 @@ def results():
     else:
         return redirect("/")
 
+
 @app.route("/googlehome/")
 def say():
-    text=request.args.get("text")
-    return redirect("https://www.arielwolle.com:9191/say/?text="+text+" is a good investment"
+    text = request.args.get("text")
+    return redirect(
+        "https://www.arielwolle.com:9191/say/?text=" + text + " is a good investment"
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)
