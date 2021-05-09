@@ -25,6 +25,7 @@ def hello(name=None):
 @app.route("/results")
 def results():
     if "name" in session:
+        
         output = train_model(session["name"], 7)
 
         if output[0] == 1:
