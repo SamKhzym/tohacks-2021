@@ -47,7 +47,7 @@ def results():
 def say():
     text = request.args.get("text")
     return redirect(
-        "http://www.arielwolle.com:9191/sas/?text=" + text + " is a good investment"
+        "http://www.arielwolle.com:9191/sas/?text=Hello my guy" + text + " is a good investment"
     )
 
 
