@@ -36,7 +36,7 @@ def results():
             name=session["name"],
             result=r,
             trials=str(output[3]),
-            confidence=str(output[2]),
+            confidence=str(int(100*output[2])),
         )
     else:
         return redirect("/")
@@ -51,4 +51,4 @@ def say():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0",port="80")
