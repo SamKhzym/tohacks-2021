@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/request.css') }}">
+{% endblock %}
+{% block title %}Is this a Good Time?{% endblock %}
+{% block content %}
+<h1>Is this a Good Time?</h1>
+<header class="row">
+    <h4 style="text-align:center">A simple yet powerful, influential, ground-breaking resource</h4>
+</header>
+<form class="row input-container" method="post">
+    <div class="col-xs-12">
+        <div class="styled-input wide">
+            <input type="text" id="sname" name="sname" required />
+            <label>Stock Ticker</label> 
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <input type="submit" class="btn-lrg submit-btn">
+    </div>
+</form>
+{% endblock %}
